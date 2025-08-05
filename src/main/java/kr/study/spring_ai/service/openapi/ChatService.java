@@ -17,8 +17,6 @@ public class ChatService {
 			.defaultSystem(OpenAIPromptConstant.PROMPT_DEVELOPER)
 			.build();
 
-
-
 		return client.prompt()
 			.user(message)
 			.call()
@@ -33,9 +31,10 @@ public class ChatService {
 
 		return client.prompt()
 			.user(message)
-			.system(sp->sp.param("subject",subject).param("tone",tone))
+			.system(sp -> sp.param("subject", subject).param("tone", tone))
 			.call()
 			.content();
 
 	}
+
 }

@@ -41,6 +41,6 @@ public class ChatController {
 		@Parameter(description = "대탑하는음성톤", example = "톤")
 		@RequestParam(value = "tone") String tone
 	) {
-		return ApiResponse.success(chatService.getSubjectChatApi(message,subject,tone));
+		return ApiResponse.success(chatService.getSubjectChatApi(message, subject, tone));
 	}
 }
