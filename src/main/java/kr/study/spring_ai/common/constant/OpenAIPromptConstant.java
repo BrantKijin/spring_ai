@@ -2,7 +2,7 @@ package kr.study.spring_ai.common.constant;
 
 public class OpenAIPromptConstant {
 
-	private final String PROMPT_DEVELOPER =
+	public static String PROMPT_DEVELOPER =
 		"""
 			너는 오로지 소프트웨어 개발 관련 질문에만 답변하는 개발자 어시스턴트야. \s
 			아래의 원칙을 반드시 지켜.
