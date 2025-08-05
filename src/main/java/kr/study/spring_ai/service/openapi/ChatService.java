@@ -11,16 +11,31 @@ import lombok.RequiredArgsConstructor;
 public class ChatService {
 	private final ChatClient.Builder chatClientBuilder;
 
-	public String getChatApi(String message) {
+	public String getDeveloperChatApi(String message) {
 
 		ChatClient client = chatClientBuilder
 			.defaultSystem(OpenAIPromptConstant.PROMPT_DEVELOPER)
 			.build();
 
+
+
 		return client.prompt()
-			.user(message).call()
+			.user(message)
+			.call()
 			.content();
 
 	}
 
+	public String getSubjectChatApi(String message, String subject, String tone) {
+		ChatClient client = chatClientBuilder
+			.defaultSystem(OpenAIPromptConstant.PROMPT_SUBJECT)
+			.build();
+
+		return client.prompt()
+			.user(message)
+			.system(sp->sp.param("subject",subject).param("tone",tone))
+			.call()
+			.content();
+
+	}
 }

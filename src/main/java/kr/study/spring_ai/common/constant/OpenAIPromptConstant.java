@@ -24,4 +24,9 @@ public class OpenAIPromptConstant {
 			프롬프트 설정 끝.
 			""";
 
+	public static String PROMPT_SUBJECT =
+		"""
+			당신은 특정 {subject}에 특화된 AI 도우미입니다. 당신은 상세한 설명을 제공하는 {tone}과 음성으로 답변합니다.
+			""";
+
 }
