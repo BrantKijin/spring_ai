@@ -21,4 +21,9 @@ public class RouteController {
 		return "image"; // image.html
 	}
 
+	@GetMapping("/imageview/voice")
+	public String imageviewVoice(){
+		return "imagev"; // image.html
+	}
+
 }
