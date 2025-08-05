@@ -1,0 +1,20 @@
+package kr.study.spring_ai.controller.openapi;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+
+@Tag(name = "OPEN_AI CHAT View")
+@RequiredArgsConstructor
+@Controller
+public class RouteController {
+
+	@GetMapping("/askview")
+	public String askview(){
+		return "ask";
+	}
+}
