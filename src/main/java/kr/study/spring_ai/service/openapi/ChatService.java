@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+
 @Service
+@RequiredArgsConstructor
 public class ChatService {
 	private final ChatClient.Builder chatClientBuilder;
 
