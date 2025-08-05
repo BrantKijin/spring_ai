@@ -26,4 +26,9 @@ public class RouteController {
 		return "imagev"; // image.html
 	}
 
+	@GetMapping("/imageview/text")
+	public String imageviewText(){
+		return "imageview";
+	}
+
 }

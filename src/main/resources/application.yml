@@ -4,3 +4,7 @@ spring:
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
+
+
+upload:
+  path: src/main/resources/static/uploads/
