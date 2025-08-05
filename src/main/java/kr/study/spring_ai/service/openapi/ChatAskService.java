@@ -23,6 +23,7 @@ public class ChatAskService {
 			new Prompt(
 				message,
 				OpenAiChatOptions.builder()
+					// LLM 에게 옵션 제공
 					.model("gpt-4o")
 					.temperature(0.4)
 					.build()
