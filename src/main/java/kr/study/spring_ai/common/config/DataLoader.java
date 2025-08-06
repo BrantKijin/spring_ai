@@ -30,7 +30,7 @@ public class DataLoader {
 	private Resource pdfResource;
 
 	//TODO 미리 읽어버림 제거
-	//@PostConstruct
+	@PostConstruct
 	public void init() {
 		Integer count = jdbcClient.sql("select count(*) from vector_store")
 			.query(Integer.class)
@@ -57,7 +57,8 @@ public class DataLoader {
 			System.out.println(splitDocuments.size()); // 45
 			System.out.println(splitDocuments.get(0)); // 25
 			// # 3.단계 : 임베딩(Embedding) -> 4.단계 : DB에 저장(백터스토어 생성)
-			vectorStore.accept(splitDocuments); // OpenAI 임베딩을 거친다.
+			//TODO 스토어 저장인데
+			//vectorStore.accept(splitDocuments); // OpenAI 임베딩을 거친다.
 			System.out.println("Application is ready to Serve the Requests");
 		}
 	}
