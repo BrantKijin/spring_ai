@@ -36,4 +36,9 @@ public class RouteController {
 		return "stt";
 	}
 
+	@GetMapping("/audioPlay")
+	public String audioPlay(){
+		return "tts";
+	}
+
 }
