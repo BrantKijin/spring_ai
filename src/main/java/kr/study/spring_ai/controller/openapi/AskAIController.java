@@ -3,13 +3,14 @@ package kr.study.spring_ai.controller.openapi;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import kr.study.spring_ai.service.openapi.ChatAskService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 public class AskAIController {
 	private final ChatAskService chatAskService;
 
