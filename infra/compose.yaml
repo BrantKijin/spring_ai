@@ -1,9 +1,9 @@
 version: "3.9"
 services:
-  xperp_batch:
+  spring_ai:
     image: postgres:latest
     ports:
-      - "5501:5501"
+      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: aegisep1234@

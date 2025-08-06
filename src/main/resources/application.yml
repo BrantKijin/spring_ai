@@ -4,11 +4,16 @@ spring:
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        initialize-schema: true
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
-
 
 upload:
   path: src/main/resources/static/uploads/
