@@ -31,4 +31,9 @@ public class RouteController {
 		return "imageview";
 	}
 
+	@GetMapping("/stt")
+	public String stt(){
+		return "stt";
+	}
+
 }
