@@ -28,7 +28,7 @@ public class MovieLoader {
 
 
 //TODO 미리 읽어버림
-	@PostConstruct
+	//@PostConstruct
 	public void init() throws Exception {
 		Integer count=jdbcClient.sql("select count(*) from vector_store")
 			.query(Integer.class)
