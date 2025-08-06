@@ -1,6 +1,13 @@
 spring:
+  docker:
+    compose:
+      enabled: false
   application:
     name: spring_ai
+  datasource:
+    url: jdbc:postgresql://localhost:5432/openai
+    username: postgres
+    password: aegisep1234@
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
@@ -14,6 +21,7 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+
 
 upload:
   path: src/main/resources/static/uploads/

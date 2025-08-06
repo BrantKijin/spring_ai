@@ -26,28 +26,31 @@ repositories {
 ext {
     set('springAiVersion', "1.0.0")
 }
-
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation("org.json:json:20250517")
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation "org.json:json:20250517"
 
-    //springdoc - swagger
+    // Spring AI 최신 STARTER만 사용!
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai:1.0.0'
+    implementation 'org.springframework.ai:spring-ai-starter-vector-store-pgvector:1.0.0'
+    implementation 'org.springframework.ai:spring-ai-pdf-document-reader:1.0.0'
+
+    // (pdf, docker compose 등 필요시만)
+    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
+    developmentOnly 'org.springframework.ai:spring-ai-spring-boot-docker-compose'
+
+    // Swagger
     testImplementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-api', version: '2.8.8'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.8.8'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.8.0'
-
-    implementation 'org.springframework.ai:spring-ai-pdf-document-reader'
-    developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-    developmentOnly 'org.springframework.ai:spring-ai-spring-boot-docker-compose'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
 }
 
 dependencyManagement {
