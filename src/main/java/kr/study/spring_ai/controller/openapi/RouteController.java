@@ -41,4 +41,9 @@ public class RouteController {
 		return "tts";
 	}
 
+	@GetMapping("/hotel")
+	public String hotel()  {
+		return "hotel";
+	}
+
 }
