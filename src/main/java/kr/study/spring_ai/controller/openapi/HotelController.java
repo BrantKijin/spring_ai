@@ -6,6 +6,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,12 +16,20 @@ import kr.study.spring_ai.common.constant.OpenAIPromptConstant;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Flux;
 
-@RequiredArgsConstructor
 @RestController
 public class HotelController {
 
 	private final VectorStore vectorStore;
 	private final ChatClient.Builder chatClientBuilder;
+
+	// @RequiredArgsConstructor로 자동 생성자 생성 시 Qualifier를 파라미터에 직접 명시해야 함
+	public HotelController(
+		@Qualifier("hotelVectorStore") VectorStore vectorStore,
+		ChatClient.Builder chatClientBuilder
+	) {
+		this.vectorStore = vectorStore;
+		this.chatClientBuilder = chatClientBuilder;
+	}
 
 	@GetMapping("/question")
 	public Flux<String> recommendMovies1(@RequestParam("question") String question, Model model) throws Exception {

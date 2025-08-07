@@ -8,6 +8,8 @@ import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
 import org.springframework.ai.reader.pdf.config.PdfDocumentReaderConfig;
 import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.context.annotation.Configuration;
@@ -20,19 +22,25 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
-@RequiredArgsConstructor
 public class DataLoader {
-
+	@Qualifier("pdfVectorStore")
 	private final VectorStore vectorStore;
 	private final JdbcClient jdbcClient;
 	// # 0. PDF 경로(resources 아래)
 	@Value("classpath:/SPRi AI Brief_11월호_산업동향_F.pdf")
 	private Resource pdfResource;
 
+	@Autowired
+	public DataLoader(@Qualifier("pdfVectorStore") VectorStore vectorStore,
+		JdbcClient jdbcClient) {
+		this.vectorStore = vectorStore;
+		this.jdbcClient = jdbcClient;
+	}
+
 	//TODO 미리 읽어버림 제거
 	@PostConstruct
 	public void init() {
-		Integer count = jdbcClient.sql("select count(*) from vector_store")
+		Integer count = jdbcClient.sql("select count(*) from pdf_vector")
 			.query(Integer.class)
 			.single();
 		System.out.println("No of Records in the PG Vector Store=" + count);
@@ -58,7 +66,7 @@ public class DataLoader {
 			System.out.println(splitDocuments.get(0)); // 25
 			// # 3.단계 : 임베딩(Embedding) -> 4.단계 : DB에 저장(백터스토어 생성)
 			//TODO 스토어 저장인데
-			//vectorStore.accept(splitDocuments); // OpenAI 임베딩을 거친다.
+			vectorStore.accept(splitDocuments); // OpenAI 임베딩을 거친다.
 			System.out.println("Application is ready to Serve the Requests");
 		}
 	}
