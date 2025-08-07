@@ -49,12 +49,12 @@ public class ImageTextGenController {
 		// Analyze the image
 		String analysisText = imageTextGenService.analyzeImage(imageFile, message);
 		// 세제곱근, 제곱근, 곱셈
-		String searchKeyword = imageTextGenService.extractKeyYouTubeSearch(analysisText);
-		List<String> youtubeUrls = imageTextGenService.searchYouTubeVideos(searchKeyword);
+		//String searchKeyword = imageTextGenService.extractKeyYouTubeSearch(analysisText);
+		//List<String> youtubeUrls = imageTextGenService.searchYouTubeVideos(searchKeyword);
 
 		String imageUrl = "/uploads/" + filename;
 
-		ImageAnalysisVO response = new ImageAnalysisVO(imageUrl, analysisText, youtubeUrls);
+		ImageAnalysisVO response = new ImageAnalysisVO(imageUrl, analysisText);
 		return ResponseEntity.ok(response);
 	}
 }
